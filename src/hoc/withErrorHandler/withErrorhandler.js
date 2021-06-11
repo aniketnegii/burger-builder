@@ -12,7 +12,16 @@ const withErrorhandler = (WrappedComponent, axios) => {
 
             constructor(props){
                 super(props);
+                this.state.error = null;
                 this.setErrorstate = this.setErrorstate.bind(this);
+                
+            }
+
+            setErrorstate(state){
+                this.setState({error:state});
+            }
+
+            componentDidMount() {
                 this.reqInterceptor = axios.interceptors.request.use(req => {
                     this.setErrorstate(null);
                     //this.state.error = null;
@@ -22,10 +31,6 @@ const withErrorhandler = (WrappedComponent, axios) => {
                     this.setErrorstate(error);
                     //this.state.error = error;
                 });
-            }
-
-            setErrorstate(state){
-                this.setState({error:state});
             }
 
             componentWillUnmount() {
