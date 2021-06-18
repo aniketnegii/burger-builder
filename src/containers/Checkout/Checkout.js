@@ -6,13 +6,13 @@ import ContactData from './ContactData/ContactData';
 class Checkout extends Component {
     
     state={
-        ingredients: null,
+        ingredients: {},
         totalPrice: 0
     }
 
     constructor(props){
         super(props);
-        this.state.ingredients = null;
+        this.state.ingredients = {};
         this.state.totalPrice = 0;
     }
 
